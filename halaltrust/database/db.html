@@ -1,0 +1,41 @@
+-- Tabel admin
+CREATE TABLE admin (
+    admin_id INT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    agama VARCHAR(50) DEFAULT NULL,
+    negara VARCHAR(100) DEFAULT NULL,
+    jenis_kelamin ENUM('Laki-laki', 'Perempuan', '') DEFAULT ''
+);
+
+-- Tabel user (dengan backticks untuk menghindari konflik dengan reserved keyword)
+CREATE TABLE `user` (
+    user_id INT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    agama VARCHAR(50) DEFAULT NULL,
+    negara VARCHAR(100) DEFAULT NULL,
+    jenis_kelamin ENUM('Laki-laki', 'Perempuan', '') DEFAULT ''
+);
+
+-- Tabel bahan_haram
+CREATE TABLE bahan_haram (
+    bahan_id INT PRIMARY KEY,
+    nama_bahan VARCHAR(100) NOT NULL,
+    link VARCHAR(255) -- Link wiki atau sumber penjelasan bahan
+);
+
+-- Tabel pertanyaan_user
+CREATE TABLE pertanyaan_user (
+    pertanyaan_id INT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL, -- Email penanya
+    pertanyaan TEXT NOT NULL,
+    status ENUM('belum dijawab', 'dijawab') DEFAULT 'belum dijawab' -- Status pertanyaan
+);
+
+ALTER TABLE `admin`
+ADD COLUMN `agama` VARCHAR(50) DEFAULT NULL,
+ADD COLUMN `negara` VARCHAR(100) DEFAULT NULL,
+ADD COLUMN `jenis_kelamin` ENUM('Laki-laki', 'Perempuan', '') DEFAULT '';
